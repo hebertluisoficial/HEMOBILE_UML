@@ -18,22 +18,22 @@ O HEMOBILE é um aplicativo voltado para a integração entre doadores de sangue
 
 07- Verifica os locais, dias e horários disponíveis para a doação;
 
-00 - Agendar doação
+08 - Agendar doação
 
-08- Agendada, o usuário receberá lembretes para a doação;
+09- Agendada, o usuário receberá lembretes para a doação;
 
 (Após a doação)
 
-09- Verifica resultados dos exames;
+10- Verifica resultados dos exames;
 
-10- Vizualiza a carteira digital do doador;
+11- Vizualiza a carteira digital do doador;
 
-11- O aplicativo mandará lembretes quando o doador puder realizar uma nova doação;
+12- O aplicativo mandará lembretes quando o doador puder realizar uma nova doação;
 
-12- O aplicativo mandará lembretes quando alguém próximo estiver precisando de doação do mesmo tipo sanguíneo;
+13- O aplicativo mandará lembretes quando alguém próximo estiver precisando de doação do mesmo tipo sanguíneo;
 
-13- O aplicativo mandará lembretes quando algém cadastrado estiver precisando de doação de medula;
+14- O aplicativo mandará lembretes quando algém cadastrado estiver precisando de doação de medula;
 
-14- O usuário (ou alguém próximo) poderá informar e solicitar quando estiver precisando de doação;
+15- O usuário (ou alguém próximo) poderá informar e solicitar quando estiver precisando de doação;
 
-15- Os órgãos atualizam os dados das doações. das bolsas de sangue e solicitações de doação dos receptores.
+16- Os órgãos atualizam os dados das doações. das bolsas de sangue e solicitações de doação dos receptores.

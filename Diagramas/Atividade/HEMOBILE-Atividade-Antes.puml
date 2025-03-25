@@ -1,0 +1,32 @@
+@startuml HEMOBILE
+start
+
+title Antes da Doação
+
+:Usuário entra e faz a autenticação;
+if (Possui cadastro?) then (sim)
+    :Realiza o login;
+else (não)
+    :Realizar cadastro;
+endif
+
+fork
+    :Vizualiza situação dos estoques de bolsas de sangue;
+fork again
+    :Vizualiza os requisitos para realizar a doação;
+end fork
+
+:Solicita agendamento de doação;
+
+:Realiza a pré-triagem;
+
+:Usuário entra e faz a autenticação;
+if (Apto?) then (sim)
+    :Verifica os locais, dias e horários disponíveis para a doação;
+    :Agendar doação;
+    stop
+else (não)
+    :Informar motivo de inaptdão;
+    stop
+endif
+@enduml

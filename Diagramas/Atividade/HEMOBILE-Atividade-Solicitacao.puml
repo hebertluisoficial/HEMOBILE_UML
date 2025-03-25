@@ -1,0 +1,12 @@
+@startuml HEMOBILE
+start
+
+title Solicitação de Doação
+
+:O usuário solicita quando estiver precisando de doação;
+
+:Hemocentro registra solicitação;
+
+:Hemocentro notifica doadores próximos;
+stop
+@enduml

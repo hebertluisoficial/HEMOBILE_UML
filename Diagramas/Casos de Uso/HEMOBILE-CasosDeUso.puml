@@ -1,0 +1,51 @@
+@startuml HEMOBILE
+left to right direction
+
+actor Usuário as us #000000
+actor Órgão as or #ff0000
+
+us <|-- or
+
+rectangle HEMOBILE {
+    or -- (Exibir estoques de bolsas)
+    or -- (Atualizar dados do sistema)
+
+    us -- (Autenticar)
+    (Autenticar) <.. (Fazer cadastro) : <<extend>>
+    (Fazer cadastro) ..> (Preencher perfil) : <<include>>
+    (Autenticar) <.. (Fazer login) : <<extend>>
+
+    us -- (Vizualizar estoque de bolsas)
+
+    us -- (Vizualizar pré requisitos para a doação)
+
+    us -- (Solicitar agendamento de doação)
+    (Solicitar agendamento de doação) ..> (Realizar pré triagem) : <<include>>
+
+    (Realizar pré triagem) <.. (Agendar doação) : <<extend>>
+    (Realizar pré triagem) <.. (Verificar disponibilidade) : <<extend>>
+
+    note bottom of (Agendar doação)
+        O usuário receberá
+        uma notificação sobre
+        a doação.
+    end note
+
+    us -- (Verificar resultados do exame)
+    us -- (Vizualizar carteira digital)
+    us -- (Solicitar pedido de doação)
+
+    note bottom of or
+        Lembrar o doador
+        de realizar novas
+        doações.
+    end note
+
+    note bottom of or
+        Avisar o doador
+        se alguém próximo
+        necessitar de doação.
+    end note
+}
+
+@enduml

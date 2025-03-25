@@ -1,0 +1,15 @@
+@startuml HEMOBILE
+start
+
+title Depois da Doação
+
+:Usuário verifica resultados de exames;
+
+if (Sangue apto para a doação?) then (sim)
+    :Vizualiza a carteira digital do doador;
+    stop
+else (não)
+    :Verifica motivo de inaptidão;
+    stop
+endif
+@enduml
