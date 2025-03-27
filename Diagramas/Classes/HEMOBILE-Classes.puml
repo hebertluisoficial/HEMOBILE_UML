@@ -10,6 +10,7 @@ class Hemocentro {
 }
 
 class Usuário {
+    -id: int
     -email: String
     -senha: String
     -nome: String
@@ -23,41 +24,85 @@ class Usuário {
 }
 
 class Doador {
+    -ativoDoar: boolean
+    -dataUltimaDoacao: int
     +AgendarDoação()
     +VizualizarExames()
     +VizualizarCarteira()
 }
 
-class Recptor {
-    +SolicitarDoação()
+class Receptor {
+  -urgencia: String
+  -dataSolicitacao: int
+  -statusSaude: String
+  +SolicitarDoação()
+  +atualizarDoacao()
 }
 
 class PréTriagem {
+-id: int
+-doador: String
+-resultado: boolean
+-relatorio: String
+'ultimo atributo dispensavel
 
 }
 
 class Agendamento {
-
+-data: int
+-hora: int
+-doador: String
+-local: String
+-status: boolean
 }
 
 class Doação {
-
+-id: int
+-doador: String
+-dataDoacao: int
+-volume: double
+-tipoSanguineo: String
++registrarDoacao(doador, volume, tipoSanguineo)
++verificarDoacao()
++atualizarVolume()
 }
 
 class Notificação {
-
+-id: int
+-usuario: String
+-mensagem: String
+-dataEnvio: int
+-status: boolean
++enviarNotificacao(usuario, mensagem)
++marcarComoLida()
 }
 
 class Carteira {
-
+-id: int
+-doador: String
+-historicoDoacoes: String
+-examesRealizados: String
++adicionarDoacao(doacao)
++adicionarExame(exame)
 }
 
 class Exames {
-
+-id: int
+-tipoExame: String
+-dataExame: int
++realizarExame(doaor)
++verificarExame()
 }
 
 class HistóricoDoações {
-
+-id: int
+-doador: String
+-doacoes: String
++adicionarDoacao(doacao)
++listarDoacoes()
 }
+
+Usuário <|-- Doador
+Usuário <|-- Receptor
 
 @enduml
