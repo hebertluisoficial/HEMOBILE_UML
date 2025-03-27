@@ -1,0 +1,62 @@
+@startuml HEMOBILE
+
+title Depois da Doação
+
+actor Usuário as Us
+participant "Hemobile" as Hb
+participant "Banco de Dados" as Bd
+participant "Hemocentro" as Hc
+
+Bd <- Hc: 1-Atualiza resultados dos exames e carteira digital
+activate Hc
+activate Bd
+deactivate Bd
+deactivate Hc
+
+Us -> Hb: 2-Faz a autenticação
+activate Hb
+    Hb -> Bd: 3-Verifica a autenticação
+    activate Bd
+        Hb <-- Bd: 4-Confirma a autenticação
+    deactivate Bd
+    Us <-- Hb: 5-Autenticação confirmada
+
+    Us -> Hb: 6-Solicita resultados dos exames
+    Hb -> Bd: 7-Solicita resultados dos exames
+    activate Bd
+        Hb <-- Bd: 8-Retorna resultados dos exames
+    deactivate Bd
+    Us <-- Hb: 9-Exibe resultados dos exames
+
+    Us -> Hb: 10-Solicita carteira digital do doador
+    Hb -> Bd: 11-Solicita carteira digital do doador
+    activate Bd
+        Hb <-- Bd: 12-Retorna carteira digital do doador
+    deactivate Bd
+    Us <-- Hb: 13-Exibe carteira digital do doador
+deactivate Hb
+
+note left of Hb
+    O aplicativo mandará
+    lembretes quando o
+    doador puder realizar
+    uma nova doação
+end note
+
+note right of Us
+    O aplicativo mandará
+    lembretes quando alguém
+    próximo estiver precisando
+    de doação do mesmo
+    tipo sanguíneo
+end note
+
+note left of Hb
+    O aplicativo mandará
+    lembretes quando algém
+    cadastrado estiver
+    precisando de doação
+    de medula
+end note
+
+@enduml

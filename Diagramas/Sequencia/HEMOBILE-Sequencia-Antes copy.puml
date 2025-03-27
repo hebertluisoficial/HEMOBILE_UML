@@ -1,0 +1,52 @@
+@startuml HEMOBILE
+
+title Antes da Doação
+
+actor Usuário as Us
+participant "Hemobile" as Hb
+participant "Banco de Dados" as Bd
+participant "Hemocentro" as Hc
+
+Us -> Hb: 1-Faz a autenticação
+activate Hb
+    Hb -> Bd: 2-Verifica a autenticação
+    activate Bd
+        Hb <-- Bd: 3-Confirma a autenticação
+    deactivate Bd
+    Us <-- Hb: 4-Autenticação confirmada
+
+    Hc -> Bd: 5-Atualiza os estoques de bolsas e requisitos
+    activate Hc
+    deactivate Hc
+        activate Bd
+            Hb <- Bd: 6-Envia os estoques de bolsa e requisitos
+        deactivate Bd
+    Us <- Hb: 7-Exibe os estoques de bolsa e requisitos
+
+    Us -> Hb: 8-Solicita agendamento de doação
+    Us <-- Hb: 9-Solicita a pré triagem
+    Us -> Hb: 10-Realiza a pré triagem
+    Us <-- Hb: 11-Usuário apto para a doação
+
+    Us -> Hb: 12-Solicita horários e locais de doação
+    Hb -> Hc: 13-Solicita horários e locais de doação
+    activate Hc
+        Hb <-- Hc: 14-Informa horários e locais de doação
+    deactivate Hc
+    Us <-- Hb: 14-Informa horários e locais de doação
+
+    Us -> Hb: 15-Realiza agendamento
+    Hb -> Hc: 16-Informa agendamento
+    activate Hc
+        Hb <-- Hc: 17-Confirma agendamento
+    deactivate Hc
+    Us <-- Hb: 18-Confirma agendamento
+
+    note left of Hb
+        O usuário receberá
+        lembretes para a
+        doação.
+    end note
+deactivate Hb
+
+@enduml

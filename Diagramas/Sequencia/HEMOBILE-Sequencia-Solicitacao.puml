@@ -1,0 +1,29 @@
+@startuml HEMOBILE
+
+title Solicitação de Doação
+
+actor Usuário as Us
+participant "Hemobile" as Hb
+participant "Banco de Dados" as Bd
+participant "Hemocentro" as Hc
+
+Us -> Hb: 1-Faz a autenticação
+activate Hb
+    Hb -> Bd: 2-Verifica a autenticação
+    activate Bd
+        Hb <-- Bd: 3-Confirma a autenticação
+    deactivate Bd
+    Us <-- Hb: 4-Autenticação confirmada
+
+    Us -> Hb: 5-Informa estar precisando de doação
+    Hb -> Hc: 6-Envia solicitação de doação
+deactivate Hb
+    activate Hc
+    deactivate Hc
+    
+    note left of Hb
+        Notifica usuários
+        próximos cadastrados
+    end note
+
+@enduml

@@ -7,6 +7,6 @@ title Solicitação de Doação
 
 :Hemocentro registra solicitação;
 
-:Hemocentro notifica doadores próximos;
+:Hemobile notifica doadores próximos cadastrados;
 stop
 @enduml

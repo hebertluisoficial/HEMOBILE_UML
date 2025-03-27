@@ -1,0 +1,63 @@
+@startuml HEMOBILE
+
+class Hemocentro {
+    -nome: String
+    -endereço: String
+    -estoqueBolsas: String
+    -listaAgendamentos: String
+    -listaNotificaçoes: String
+    -listaExames: String
+}
+
+class Usuário {
+    -email: String
+    -senha: String
+    -nome: String
+    -idade: Int
+    -CPF: String
+    -endereço: String
+    -sangue: String
+
+    +FazerAutenticação(email, Senha)
+    +RealizarPréTriagem()
+}
+
+class Doador {
+    +AgendarDoação()
+    +VizualizarExames()
+    +VizualizarCarteira()
+}
+
+class Recptor {
+    +SolicitarDoação()
+}
+
+class PréTriagem {
+
+}
+
+class Agendamento {
+
+}
+
+class Doação {
+
+}
+
+class Notificação {
+
+}
+
+class Carteira {
+
+}
+
+class Exames {
+
+}
+
+class HistóricoDoações {
+
+}
+
+@enduml
