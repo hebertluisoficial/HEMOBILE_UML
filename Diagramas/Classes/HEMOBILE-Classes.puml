@@ -5,7 +5,7 @@ class Hemocentro {
     -endereço: String
     -estoqueBolsas: String
     -listaAgendamentos: String
-    -listaNotificaçoes: String
+    -listaNotificações: String
     -listaExames: String
 }
 
@@ -19,7 +19,7 @@ class Usuário {
     -endereço: String
     -sangue: String
 
-    +FazerAutenticação(email, Senha)
+    +FazerAutenticação(email, senha)
     +RealizarPréTriagem()
 }
 
@@ -27,8 +27,8 @@ class Doador {
     -ativoDoar: boolean
     -dataUltimaDoacao: int
     +AgendarDoação()
-    +VizualizarExames()
-    +VizualizarCarteira()
+    +VisualizarExames()
+    +VisualizarCarteira()
 }
 
 class Receptor {
@@ -36,73 +36,84 @@ class Receptor {
   -dataSolicitacao: int
   -statusSaude: String
   +SolicitarDoação()
-  +atualizarDoacao()
+  +AtualizarDoacao()
 }
 
 class PréTriagem {
--id: int
--doador: String
--resultado: boolean
--relatorio: String
-'ultimo atributo dispensavel
-
+  -id: int
+  -resultado: boolean
+  -relatorio: String
 }
 
 class Agendamento {
--data: int
--hora: int
--doador: String
--local: String
--status: boolean
+  -data: int
+  -hora: int
+  -local: String
+  -status: boolean
 }
 
 class Doação {
--id: int
--doador: String
--dataDoacao: int
--volume: double
--tipoSanguineo: String
-+registrarDoacao(doador, volume, tipoSanguineo)
-+verificarDoacao()
-+atualizarVolume()
+  -id: int
+  -dataDoacao: int
+  -volume: double
+  -tipoSanguineo: String
+  +RegistrarDoacao(doador, volume, tipoSanguineo)
+  +VerificarDoacao()
+  +AtualizarVolume()
 }
 
 class Notificação {
--id: int
--usuario: String
--mensagem: String
--dataEnvio: int
--status: boolean
-+enviarNotificacao(usuario, mensagem)
-+marcarComoLida()
+  -id: int
+  -mensagem: String
+  -dataEnvio: int
+  -status: boolean
+  +EnviarNotificacao(usuario, mensagem)
+  +MarcarComoLida()
 }
 
 class Carteira {
--id: int
--doador: String
--historicoDoacoes: String
--examesRealizados: String
-+adicionarDoacao(doacao)
-+adicionarExame(exame)
+  -id: int
+  -historicoDoacoes: String
+  -examesRealizados: String
+  +AdicionarDoacao(doacao)
+  +AdicionarExame(exame)
 }
 
 class Exames {
--id: int
--tipoExame: String
--dataExame: int
-+realizarExame(doaor)
-+verificarExame()
+  -id: int
+  -tipoExame: String
+  -dataExame: int
+  +RealizarExame(doador)
+  +VerificarExame()
 }
 
 class HistóricoDoações {
--id: int
--doador: String
--doacoes: String
-+adicionarDoacao(doacao)
-+listarDoacoes()
+  -id: int
+  -doacoes: String
+  +AdicionarDoacao(doacao)
+  +ListarDoacoes()
 }
 
 Usuário <|-- Doador
 Usuário <|-- Receptor
+
+Hemocentro "1" o-- "0..*" Agendamento
+Hemocentro "1" o-- "0..*" Exames
+Hemocentro "1" o-- "0..*" Notificação
+
+Receptor "1" --> "1" Hemocentro : Solicita doação
+Notificação "1" --> "1" Usuário : Notifica
+
+Doador "1" o-- "1" Carteira
+Doador "1" o-- "0..*" HistóricoDoações
+Doador "1" o-- "0..*" Exames
+Doador "1" --> "0..*" Agendamento : Faz agendamento
+Doador "1" --> "0..*" Doação : Realiza
+
+Doador "1" --> "0..*" PréTriagem : Realiza
+PréTriagem "1" --> "1" Hemocentro : Feita em
+
+Carteira "1" --* "1" HistóricoDoações
+HistóricoDoações "1" --* "0..*" Doação
 
 @enduml
